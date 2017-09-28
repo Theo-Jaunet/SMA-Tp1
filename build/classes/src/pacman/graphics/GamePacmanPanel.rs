@@ -1,0 +1,5 @@
+pacman.graphics.GamePacmanPanel$OuestAction
+pacman.graphics.GamePacmanPanel
+pacman.graphics.GamePacmanPanel$EstAction
+pacman.graphics.GamePacmanPanel$NordAction
+pacman.graphics.GamePacmanPanel$SudAction
