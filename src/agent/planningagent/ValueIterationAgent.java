@@ -146,7 +146,7 @@ public class ValueIterationAgent extends PlanningValueAgent {
             }
             else{
                 Random rand = new Random();
-                int randomNum = rand.nextInt((possibleActions.size()) + 1);
+                int randomNum = rand.nextInt(possibleActions.size());
                 return possibleActions.get(randomNum);
             }
         }

@@ -48,11 +48,7 @@ public abstract class PlanningValueAgent extends ValueAgent implements IPlanning
 	public void run(int nbIterations){
 
 		for (int i=0;i<nbIterations;i++){
-			try {
-				this.updateV();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			this.updateV();
 		}
 	
 	}
@@ -64,11 +60,7 @@ public abstract class PlanningValueAgent extends ValueAgent implements IPlanning
 		int nbIter=0;
 		double epsilon = 0.0001;
 		do{
-			try {
-				this.updateV();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			this.updateV();
 			nbIter++;
 		}
 		while(this.getDelta()>epsilon);
@@ -80,7 +72,7 @@ public abstract class PlanningValueAgent extends ValueAgent implements IPlanning
 	 * Met a jour sa fonction de valeur: effectue UNE iteration 
 	 * 
 	 */
-	public abstract void updateV() throws Exception;
+	public abstract void updateV();
 	
 	
 	

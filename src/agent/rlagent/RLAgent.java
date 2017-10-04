@@ -108,7 +108,7 @@ public abstract class RLAgent extends ValueAgent implements IRLAgent,Observer{
 	 * @return liste des actions possibles dans etat _e. Renvoi liste vide si etat absorbant.
 	 */
 	public List<Action> getActionsLegales(Etat e){
-		return env.getActionsPossibles(e);
+		return this.env.getActionsPossibles(e);
 	}
 	/**
 	 * lance nbe episode, chqaue episode
