@@ -45,44 +45,44 @@ public class StateAgentPacman
 		this.last_y=-1;
 		this.x=start_x;
 		this.y=start_y;
-		scarredTimer=0;
-		direction=MazePacman.NORTH;
-		isdead=false;
+		this.scarredTimer=0;
+		this.direction=MazePacman.NORTH;
+		this.isdead=false;
 	}
 	
 	/** 
 	 * @return la direction actuelle de l'agent
 	 */
-	public int getDirection() {return(direction);}
+	public int getDirection() {return(this.direction);}
 	
 	/**
 	 * @return la position X initiale
 	 */
-	public int getStartX() {return(start_x);}
+	public int getStartX() {return(this.start_x);}
 	
 	/**
 	 * @return  la position Y initiale
 	 */
-	public int getStartY() {return(start_y);}
+	public int getStartY() {return(this.start_y);}
 
 	/**
 	 * @return  la position X actuelle
 	 */
-	public int getX() {return(x);}
+	public int getX() {return(this.x);}
 	
 	/**
 	 * @return  la position Y actuelle
 	 */
-	public int getY() {return(y);}
+	public int getY() {return(this.y);}
 	
 	/**
 	 * @return la derniere position X avant l'actuelle
 	 */
-	public int getLastX() {return(last_x);}
+	public int getLastX() {return(this.last_x);}
 	/**
 	 * @return la derniere position Y avant l'actuelle
 	 */
-	public int getLastY() {return(last_y);}
+	public int getLastY() {return(this.last_y);}
 	/**
 	 * @return le dernier deplacement de l'agent (MazePacman.NORTH, ...)
 	 */
@@ -101,27 +101,27 @@ public class StateAgentPacman
 	 * @return si l'agent est ''effraye''
 	 * 
 	 */
-	public boolean isScarred() {return(scarredTimer>0);}
+	public boolean isScarred() {return(this.scarredTimer>0);}
 	
 	/**
 	 * @return le nombre de coup pendant lequel l'agent restera effraye
 	 * 
 	 */
-	public int getScarredTimer() {return(scarredTimer);}
+	public int getScarredTimer() {return(this.scarredTimer);}
 
 	/**
 	 * @return si l'agent est mort ou non
 	 * 
 	 */
-	public boolean isDead() {return(isdead);}
+	public boolean isDead() {return(this.isdead);}
 
 	public void setX(int x) {this.x=x;}
 	public void setY(int y) {this.y=y;}
-	public void setLastX(int x) {last_x=x;}
-	public void setLastY(int y) {last_y=y;}
+	public void setLastX(int x) {this.last_x=x;}
+	public void setLastY(int y) {this.last_y=y;}
 	public void setScarredTimer(int t) {this.scarredTimer=t;}
 	public void setDirection(int d) {this.direction=d;}
-	public void setDead(boolean v) {isdead=v;}
+	public void setDead(boolean v) {this.isdead=v;}
 	
 	public StateAgentPacman copy()
 	{
@@ -131,8 +131,8 @@ public class StateAgentPacman
 		a.setLastX(getLastX());
 		a.setLastY(getLastY());
 		a.setScarredTimer(getScarredTimer());
-		a.setDirection(direction);
-		a.setDead(isdead);
+		a.setDirection(this.direction);
+		a.setDead(this.isdead);
 		return(a);
 	}
 }

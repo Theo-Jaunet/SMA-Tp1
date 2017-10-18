@@ -28,7 +28,7 @@ import agent.strategy.StrategyExplorationTest1;
 
 public class testRLPacman extends Application{
 	/** type de labyrinthe pour le jeu de pacman*/
-	static String mazename = "/home/brice/Documents/TPSMA/SMATP1/src/pacmanlayouts/smallGrid.lay";//smallGrid smallGrid2 mediumGrid
+	static String mazename = "/home/brice/Documents/TPSMA/SMATP1/src/pacmanlayouts/smallGrid2.lay";//smallGrid smallGrid2 mediumGrid
 
 	// parametres RL*/
 	static double gamma=0.8;
@@ -166,9 +166,10 @@ public class testRLPacman extends Application{
 	 */
 	public static void main(String[] args) {
 		//testPacmanClassicRL.testCalculQValeur();
-		
+		System.out.println("DEB");
 		testRLPacman.common();
 		testRLPacman.apprentissage();
+                System.out.println("FIN");
 		 
 
 		  if (DISPLAYCHART){

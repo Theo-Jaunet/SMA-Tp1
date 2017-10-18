@@ -221,47 +221,50 @@ public class StateGamePacman implements Etat//TODO verifier hashcode, equals et 
 		gw.updatePacman(pacmanAction);
 		return(gw);
 	 }
-		/**
-		 * Renvoie l'etat prochain du jeu a partir des actions de plusieurs pacman (etat actuel du jeu non modifie)
-		 *  <p> appele {@link #updatePacmans}
-		 * @param pacmanActions
-		 * @return
-		 */
-		public StateGamePacman nextStatePacmans(ArrayList<ActionPacman> pacmansActions)
-		{
-			StateGamePacman gw=(StateGamePacman)(copy());
-			gw.updatePacmans(pacmansActions);
-			return(gw);
-		}
-		/**
-		 * Renvoie l'etat prochain du jeu a partir d'une action d'un fantome (etat actuel du jeu non modifie)
-		 * (on considere ici que seul le premier fantome bouge)
-		 * <p> appele {@link #updateGhosts}
-		 * @param ghostsAction
-		 * @return
-		 */
-		public StateGamePacman nextStateGhost(ActionPacman ghostsAction)
-		{
-			StateGamePacman gw=(StateGamePacman)(copy());
-			gw.updateGhost(ghostsAction);
-			return(gw);
-		}
-		/**
-		 * Renvoie l'etat prochain du jeu a partir des actions de plusieurs fantomes (etat actuel du jeu non modifie)
-		 * <p> appele {@link #updateGhosts}
-		 * @param ghostsActions
-		 * @return
-		 */
-		public StateGamePacman nextStateGhosts(ArrayList<ActionPacman> ghostsActions)
-		{
-			StateGamePacman gw=(StateGamePacman)(copy());
-			gw.updateGhosts(ghostsActions);
-			//fait dans boucle de jeu runUntilEnd, de plus, non utilise par EnviPacmanMDP...
-			//if (this.isLose()==true) score+=StateGamePacman.LOOSE;
-			//if (this.isWin()==true) score+=StateGamePacman.WIN;
-			
-			return(gw);
-		}		
+         
+        /**
+         * Renvoie l'etat prochain du jeu a partir des actions de plusieurs pacman (etat actuel du jeu non modifie)
+         *  <p> appele {@link #updatePacmans}
+         * @param pacmanActions
+         * @return
+         */
+        public StateGamePacman nextStatePacmans(ArrayList<ActionPacman> pacmansActions)
+        {
+                StateGamePacman gw=(StateGamePacman)(copy());
+                gw.updatePacmans(pacmansActions);
+                return(gw);
+        }
+        
+        /**
+         * Renvoie l'etat prochain du jeu a partir d'une action d'un fantome (etat actuel du jeu non modifie)
+         * (on considere ici que seul le premier fantome bouge)
+         * <p> appele {@link #updateGhosts}
+         * @param ghostsAction
+         * @return
+         */
+        public StateGamePacman nextStateGhost(ActionPacman ghostsAction)
+        {
+                StateGamePacman gw=(StateGamePacman)(copy());
+                gw.updateGhost(ghostsAction);
+                return(gw);
+        }
+        
+        /**
+         * Renvoie l'etat prochain du jeu a partir des actions de plusieurs fantomes (etat actuel du jeu non modifie)
+         * <p> appele {@link #updateGhosts}
+         * @param ghostsActions
+         * @return
+         */
+        public StateGamePacman nextStateGhosts(ArrayList<ActionPacman> ghostsActions)
+        {
+                StateGamePacman gw=(StateGamePacman)(copy());
+                gw.updateGhosts(ghostsActions);
+                //fait dans boucle de jeu runUntilEnd, de plus, non utilise par EnviPacmanMDP...
+                //if (this.isLose()==true) score+=StateGamePacman.LOOSE;
+                //if (this.isWin()==true) score+=StateGamePacman.WIN;
+
+                return(gw);
+        }		
 	
 	
 	///////////// DEPLACEMENT AGENT /////
@@ -293,7 +296,8 @@ public class StateGamePacman implements Etat//TODO verifier hashcode, equals et 
 			s.setLastY(y);			
 		}
 		return s;
-	}	
+	}
+        
 	/**
 	 * Renvoi le nouvel etat du pacman i s'il fait une action {@link StateAgentPacman}
 	 * <p> Simu: ne modifie pas l'etat du pacman
