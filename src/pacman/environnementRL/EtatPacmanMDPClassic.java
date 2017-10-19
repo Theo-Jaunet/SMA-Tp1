@@ -15,15 +15,17 @@ import pacman.elements.MazePacman;
  *
  */
 public class EtatPacmanMDPClassic implements Etat, Cloneable {
-      
+    
+    private MazePacman maze;
     private int[][] coordPacman;
     private int[][] coordGhost;
     private int[] closestDot;
 //    private int[][] coordDots;
 
     public EtatPacmanMDPClassic(StateGamePacman _stategamepacman) {
-
-        MazePacman maze = _stategamepacman.getMaze();
+        
+//        MazePacman maze = _stategamepacman.getMaze();
+        this.maze = _stategamepacman.getMaze();
         int nbGhost = maze.getNumberOfGhosts();
         int nbPacman = maze.getNumberOfPacmans();
 //        int nbFood = maze.getNbfood();
@@ -56,7 +58,19 @@ public class EtatPacmanMDPClassic implements Etat, Cloneable {
 //            }
 //        }
     }
-
+    
+    public int getDimensions(){
+        int nbEtats = 0;
+        for (int x = 0; x < this.maze.getSizeX(); x++){
+            for (int y = 0; y < this.maze.getSizeY(); y++){
+                if (! this.maze.isWall(x, y)){
+                    nbEtats += 1;
+                }
+            }
+        }
+        return nbEtats;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
