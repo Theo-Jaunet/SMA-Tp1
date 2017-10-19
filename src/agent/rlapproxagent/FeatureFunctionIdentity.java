@@ -23,7 +23,7 @@ public class FeatureFunctionIdentity implements FeatureFunction {
 
     //*** VOTRE CODE
     protected double[] vecteurFunc;
-    protected ArrayList<Etat> etatsDejaVu;
+    protected ArrayList<Integer> etatsDejaVu;
     protected int nbAction;
 
     public FeatureFunctionIdentity(int _nbEtat, int _nbAction) {
@@ -44,12 +44,12 @@ public class FeatureFunctionIdentity implements FeatureFunction {
     public double[] getFeatures(Etat e, Action a) {
         //*** VOTRE CODE
         int index;
-        if (!this.etatsDejaVu.contains(e)) {
+        if (!this.etatsDejaVu.contains(e.hashCode())) {
             index = this.etatsDejaVu.size();
-            this.etatsDejaVu.add(e);
+            this.etatsDejaVu.add(e.hashCode());
         }
         else{
-            index = this.etatsDejaVu.indexOf(e);
+            index = this.etatsDejaVu.indexOf(e.hashCode());
         }
         for (int indCouple = 0; indCouple < this.getFeatureNb(); indCouple++) {
             this.vecteurFunc[indCouple] = 0;
