@@ -15,7 +15,7 @@ import pacman.elements.MazePacman;
  *
  */
 public class EtatPacmanMDPClassic implements Etat, Cloneable {
-    
+
     private MazePacman maze;
     private int[][] coordPacman;
     private int[][] coordGhost;
@@ -23,7 +23,7 @@ public class EtatPacmanMDPClassic implements Etat, Cloneable {
 //    private int[][] coordDots;
 
     public EtatPacmanMDPClassic(StateGamePacman _stategamepacman) {
-        
+
 //        MazePacman maze = _stategamepacman.getMaze();
         this.maze = _stategamepacman.getMaze();
         int nbGhost = maze.getNumberOfGhosts();
@@ -58,19 +58,11 @@ public class EtatPacmanMDPClassic implements Etat, Cloneable {
 //            }
 //        }
     }
-    
-    public int getDimensions(){
-        int nbEtats = 0;
-        for (int x = 0; x < this.maze.getSizeX(); x++){
-            for (int y = 0; y < this.maze.getSizeY(); y++){
-                if (! this.maze.isWall(x, y)){
-                    nbEtats += 1;
-                }
-            }
-        }
-        return nbEtats;
+
+    public int getDimensions() {
+        return (int) Math.pow(this.maze.getSizeX() * this.maze.getSizeY() - this.maze.getNbwall(), 3);
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -104,7 +96,6 @@ public class EtatPacmanMDPClassic implements Etat, Cloneable {
         return true;
     }
 
-    
     @Override
     public String toString() {
 

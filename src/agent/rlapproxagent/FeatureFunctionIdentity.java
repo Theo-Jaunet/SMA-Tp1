@@ -20,30 +20,43 @@ import javafx.util.Pair;
  *
  */
 public class FeatureFunctionIdentity implements FeatureFunction {
+
     //*** VOTRE CODE
-    protected int nbCouple;
+    protected double[] vecteurFunc;
+    protected ArrayList<Etat> etatsDejaVu;
+    protected int nbAction;
 
     public FeatureFunctionIdentity(int _nbEtat, int _nbAction) {
         //*** VOTRE CODE
-        this.nbCouple = _nbEtat * _nbAction;
+        this.vecteurFunc = new double[_nbEtat * _nbAction];
+        this.etatsDejaVu = new ArrayList<>();
+        this.nbAction = _nbAction;
     }
 
     @Override
     public int getFeatureNb() {
         //*** VOTRE CODE
-        return this.nbCouple;
+        return this.vecteurFunc.length;
 //		return 0;
     }
 
     @Override
     public double[] getFeatures(Etat e, Action a) {
         //*** VOTRE CODE
-        double[] res = new double[this.nbCouple];
-        res[0] = 1;
-        for (int indCouple = 1; indCouple < this.nbCouple; indCouple ++){
-            res[indCouple] = 0;
+        int index;
+        if (!this.etatsDejaVu.contains(e)) {
+            index = this.etatsDejaVu.size();
+            this.etatsDejaVu.add(e);
         }
-        return res;
+        else{
+            index = this.etatsDejaVu.indexOf(e);
+        }
+        for (int indCouple = 0; indCouple < this.getFeatureNb(); indCouple++) {
+            this.vecteurFunc[indCouple] = 0;
+        }
+
+        this.vecteurFunc[index * this.nbAction + a.ordinal()] = 1;
+        return this.vecteurFunc;
     }
 
 }
