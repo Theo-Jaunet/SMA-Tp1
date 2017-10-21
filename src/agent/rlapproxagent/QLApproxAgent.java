@@ -67,6 +67,9 @@ public class QLApproxAgent extends QLearningAgent {
         super.reset();
         this.qvaleurs.clear();
         //*** VOTRE CODE
+        this.qValeur = 0;
+        this.vecFeat = null;
+        this.weights = null;
         this.episodeNb = 0;
         this.notifyObs();
     }
