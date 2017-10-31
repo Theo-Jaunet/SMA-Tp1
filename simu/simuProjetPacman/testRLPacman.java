@@ -83,7 +83,7 @@ public class testRLPacman extends Application {
 
     private static void setRLAgent() {
 /*        //QLearning tabulaire classique
-	    pacmanmdp = new EnvironnementPacmanMDPClassic(mazename, true);
+        pacmanmdp = new EnvironnementPacmanMDPClassic(mazename, true);
         rlagent = new QLearningAgent(alpha, gamma, pacmanmdp);*/
 
         //Qlearning avec fonctions caracteristiques identite
@@ -94,9 +94,9 @@ public class testRLPacman extends Application {
         rlagent = new QLApproxAgent(alpha, gamma, pacmanmdp, featurefunction);*/
 
         //QLearning avec approximation lineaire
-/*        	pacmanmdp = new EnvironnementPacmanFeatureRL(mazename,true);//smallGrid smallGrid2 mediumGrid
-		FeatureFunction featurefunction2 = new FeatureFunctionPacman();
-		rlagent = new QLApproxAgent(alpha,gamma,pacmanmdp,featurefunction2);*/
+        pacmanmdp = new EnvironnementPacmanFeatureRL(mazename, true);//smallGrid smallGrid2 mediumGrid
+        FeatureFunction featurefunction2 = new FeatureFunctionPacman();
+        rlagent = new QLApproxAgent(alpha, gamma, pacmanmdp, featurefunction2);
     }
 
     /**
@@ -213,7 +213,7 @@ public class testRLPacman extends Application {
      * test avec action predefinie a chq pas pour verifier mise à jour de Q
      */
     private static void testCalculQValeur() {
-        pacmanmdp = new EnvironnementPacmanMDPClassic("pacmanlayouts/smallGrid.lay", true);//smallGrid smallGrid2 mediumGrid
+        pacmanmdp = new EnvironnementPacmanMDPClassic("pacmanlayouts/mediumGrid.lay", true);//smallGrid smallGrid2 mediumGrid
         double gamma = 0.2;
         double alpha = 0.1;
 

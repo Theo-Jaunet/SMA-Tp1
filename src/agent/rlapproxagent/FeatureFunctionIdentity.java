@@ -17,38 +17,43 @@ import javafx.util.Pair;
  * <li> pas de biais ici
  *
  * @author laetitiamatignon
- *
  */
 public class FeatureFunctionIdentity implements FeatureFunction {
 
     //*** VOTRE CODE
-    protected double[] vecteurFunc;
-    protected ArrayList<Integer> etatsDejaVu;
+//    protected double[] vecteurFunc;
+    //    protected ArrayList<Integer> etatsDejaVu;
+    protected HashMap<Pair<Etat, Action>, double[]> memory;
     protected int nbAction;
+    protected int nbEtats;
+    protected int memoryLength;
 
     public FeatureFunctionIdentity(int _nbEtat, int _nbAction) {
         //*** VOTRE CODE
-        this.vecteurFunc = new double[_nbEtat * _nbAction];
-        this.etatsDejaVu = new ArrayList<>();
+//        this.vecteurFunc = new double[_nbEtat * _nbAction];
+//        this.etatsDejaVu = new ArrayList<>();
+        this.memory = new HashMap<>();
         this.nbAction = _nbAction;
+        this.nbEtats = _nbEtat;
+        this.memoryLength = 0;
     }
 
     @Override
     public int getFeatureNb() {
         //*** VOTRE CODE
-        return this.vecteurFunc.length;
+//        return this.vecteurFunc.length;
+        return this.nbAction * this.nbEtats;
 //		return 0;
     }
 
     @Override
     public double[] getFeatures(Etat e, Action a) {
         //*** VOTRE CODE
-        int index;
+/*        int index;
         if (!this.etatsDejaVu.contains(e.hashCode())) {
             index = this.etatsDejaVu.size();
             this.etatsDejaVu.add(e.hashCode());
-        }
-        else{
+        } else {
             index = this.etatsDejaVu.indexOf(e.hashCode());
         }
         for (int indCouple = 0; indCouple < this.getFeatureNb(); indCouple++) {
@@ -57,6 +62,22 @@ public class FeatureFunctionIdentity implements FeatureFunction {
 
         this.vecteurFunc[index * this.nbAction + a.ordinal()] = 1;
         return this.vecteurFunc;
+    }*/
+        int size = this.getFeatureNb();
+        Pair couple = new Pair(e, a);
+        if (this.memory.containsKey(couple)){
+            return this.memory.get(couple);
+        }
+        else{
+            double[] newVec = new double[size];
+            for (int ind = 0; ind < size; ind ++){
+                newVec[ind] = 0;
+            }
+            newVec[this.memoryLength] = 1;
+            this.memoryLength += 1;
+            this.memory.put(couple, newVec);
+        }
+        return this.memory.get(couple);
     }
 
 }
